@@ -1,0 +1,3 @@
+$kind: collection
+description: 'Create a new user account by providing a username and password.'
+order: 1000

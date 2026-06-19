@@ -1,0 +1,41 @@
+$kind: http-example
+description: 'The user was found. Returns the user object containing their `id` and `username`.'
+request:
+  url: "{{baseUrl}}/v1/users/:id"
+  method: GET
+  headers:
+    - key: Accept
+      value: application/json
+    - key: X-API-Key
+      value: <API Key>
+      description: "Added as a part of security scheme: apikey"
+  pathVariables:
+    id: "549"
+  body:
+    type: text
+    content: ""
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "id": 6546,
+        "username": "string"
+      }
+    $type: |-
+      {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "username": {
+            "type": "string"
+          }
+        }
+      }
+order: 1000

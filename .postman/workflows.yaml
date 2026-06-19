@@ -9,8 +9,16 @@ workflows:
       collection: ../postman/collections/User API Integration Tests
       options:
         syncExamples: false
+    - spec: ../contract/index.yaml
+      collection: ../postman/collections/User API Documentation
+      options:
+        syncExamples: false
   syncCollectionToSpec:
     - spec: ../contract/index.yaml
       collection: ../postman/collections/User API Integration Tests
+      options:
+        syncExamples: false
+    - spec: ../contract/index.yaml
+      collection: ../postman/collections/User API Documentation
       options:
         syncExamples: false

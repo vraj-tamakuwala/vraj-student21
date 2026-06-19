@@ -1,0 +1,3 @@
+$kind: collection
+description: 'Authenticate an existing user with their credentials and receive a session token.'
+order: 2000

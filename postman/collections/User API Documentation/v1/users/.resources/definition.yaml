@@ -1,0 +1,10 @@
+$kind: collection
+description: |-
+  Endpoints for managing user accounts. Includes registration, authentication, and CRUD operations on individual users.
+  
+  - **POST /register** — Create a new user account
+  - **POST /login** — Authenticate a user and obtain a session token
+  - **GET /:id** — Fetch a user's profile by their unique ID
+  - **PUT /:id** — Update a user's username or password
+  - **DELETE /:id** — Permanently remove a user account
+order: 1000

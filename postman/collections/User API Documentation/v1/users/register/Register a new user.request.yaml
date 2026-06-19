@@ -1,0 +1,39 @@
+$kind: http-request
+description: |-
+  Creates a new user account. Provide a unique `username` and a `password` in the request body. On success, the server returns the newly created user object including the assigned `id`.
+
+  **Request Body**
+  | Field | Type | Required | Description |
+  |-------|------|----------|-------------|
+  | username | string | ✅ | The desired username for the new account |
+  | password | string | ✅ | The account password |
+
+  **Responses**
+  - `201 Created` — User registered successfully
+  - `500 Internal Server Error` — Unexpected server error
+url: '{{baseUrl}}/v1/users/register'
+method: POST
+headers:
+  Content-Type: application/json
+  Accept: application/json
+body:
+  type: json
+  content: |-
+    {
+      "username": "string",
+      "password": "string"
+    }
+  $type: |-
+    {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    }
+examples: ./.resources/Register a new user.resources/examples
+order: 1000

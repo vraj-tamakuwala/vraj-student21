@@ -1,0 +1,30 @@
+$kind: collection
+description: |-
+  # User API
+
+  The User API provides a complete set of endpoints for managing user accounts in your application. It supports the full user lifecycle — from registration and authentication through to profile management and account deletion.
+
+  ## Base URL
+  All requests are made to `{{baseUrl}}/v1/users`.
+
+  ## Authentication
+  Protected endpoints require an API key passed via the `X-API-Key` header. Use the `{{apiKey}}` variable to supply your key.
+
+  ## Endpoints Overview
+  | Method | Path | Description |
+  |--------|------|-------------|
+  | POST | /v1/users/register | Register a new user account |
+  | POST | /v1/users/login | Authenticate and receive a session token |
+  | GET | /v1/users/:id | Retrieve a user by ID |
+  | PUT | /v1/users/:id | Update a user's details |
+  | DELETE | /v1/users/:id | Delete a user account |
+variables:
+  baseUrl: /
+auth:
+  - id: 980d19c0-cca6-49ac-b4cf-a0704c01c806
+    type: apikey
+    name: apikey auth
+    credentials:
+      key: X-API-Key
+      value: "{{apiKey}}"
+      in: header
