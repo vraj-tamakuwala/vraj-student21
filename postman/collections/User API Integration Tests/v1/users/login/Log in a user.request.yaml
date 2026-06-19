@@ -1,5 +1,4 @@
 $kind: http-request
-name: Log in a user
 url: "{{baseUrl}}/v1/users/login"
 method: POST
 headers:

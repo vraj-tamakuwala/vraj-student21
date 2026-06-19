@@ -1,7 +1,15 @@
+owner: "55929738"
+team: "18160021"
+lastUpdatedBy: "55929738"
+lastRevision: 1781868577000
 name: local
+color: 300
 values:
   - key: baseUrl
-    value: 'https://localhost:3000'
+    value: https://localhost:3000
+    enabled: true
   - key: apiKey
-    value: ''
-color: 300
+    value: ""
+    enabled: true
+createdAt: 2026-06-19T10:23:34.000Z
+updatedAt: 2026-06-19T11:29:37.000Z

@@ -1,5 +1,4 @@
 $kind: http-request
-name: Register a new user
 url: "{{baseUrl}}/v1/users/register"
 method: POST
 headers:

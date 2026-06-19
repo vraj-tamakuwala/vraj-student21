@@ -4,7 +4,7 @@ description: This is a demo for user API
 variables:
   baseUrl: /
 auth:
-  - id: 8fcf76df-9d6b-471a-a04a-f85cc947b75b
+  - id: fc2192be-f429-465f-87d9-32e499728016
     type: apikey
     name: apikey auth
     credentials:

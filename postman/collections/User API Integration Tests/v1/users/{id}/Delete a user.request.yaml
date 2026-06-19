@@ -1,5 +1,4 @@
 $kind: http-request
-name: Delete a user
 url: "{{baseUrl}}/v1/users/:id"
 method: DELETE
 headers:
@@ -61,4 +60,4 @@ scripts:
       }
     language: text/javascript
 examples: ./.resources/Delete a user.resources/examples
-order: 3000
+order: 2000

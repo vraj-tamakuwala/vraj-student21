@@ -58,7 +58,7 @@ scripts:
       // Test 6: Returned id matches the requested id
       pm.test("Returned user id matches the requested id", function () {
           const jsonData = pm.response.json();
-          const requestedId = parseInt(pm.request.url.variables.get("id"));
+          const requestedId = parseInt(pm.variables.get("userId"));
           pm.expect(jsonData.id).to.eql(requestedId);
       });
 

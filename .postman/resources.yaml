@@ -1,12 +1,8 @@
 workspace:
   id: b515cee0-0ef7-4db9-9662-03a5c976a3a9
-
 localResources:
   specs:
     - ../contract/index.yaml
-
-# Each entry here maps a local resource to one or more corresponding objects in Postman Cloud
-
 cloudResources:
   environments:
     ../postman/environments/local.environment.yaml: 55929738-17c58628-d17a-40c9-9d11-516d9d0c5c7c
