@@ -1,0 +1,36 @@
+$kind: http-request
+description: |-
+  Permanently deletes the user account identified by the given `id`. This action is irreversible — once deleted, the user's data cannot be recovered.
+
+  **Path Variables**
+  | Variable | Type | Required | Description |
+  |----------|------|----------|-------------|
+  | id | integer | ✅ | The unique identifier of the user to delete |
+
+  **Responses**
+  - `200 OK` — User deleted successfully
+  - `500 Internal Server Error` — Unexpected server error
+url: '{{baseUrl}}/v1/users/:id'
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "549"
+    $type: |-
+      {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "value"
+        ]
+      }
+body:
+  type: text
+  content: ""
+examples: ./.resources/Delete a user.resources/examples
+order: 3000

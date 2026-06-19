@@ -1,0 +1,37 @@
+$kind: http-example
+description: 'The user account was permanently deleted. The response body contains a confirmation `message`. This action cannot be undone.'
+request:
+  url: "{{baseUrl}}/v1/users/:id"
+  method: DELETE
+  headers:
+    - key: Accept
+      value: application/json
+    - key: X-API-Key
+      value: <API Key>
+      description: "Added as a part of security scheme: apikey"
+  pathVariables:
+    id: "549"
+  body:
+    type: text
+    content: ""
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "message": "string"
+      }
+    $type: |-
+      {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+order: 1000

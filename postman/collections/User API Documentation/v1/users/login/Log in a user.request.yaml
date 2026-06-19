@@ -1,0 +1,40 @@
+$kind: http-request
+description: |-
+  Authenticates an existing user using their `username` and `password`. On success, returns the user's `id`, `username`, and a session `token` that can be used to authorize subsequent requests.
+
+  **Request Body**
+  | Field | Type | Required | Description |
+  |-------|------|----------|-------------|
+  | username | string | ✅ | The user's registered username |
+  | password | string | ✅ | The user's password |
+
+  **Responses**
+  - `200 OK` — Login successful; returns `id`, `username`, and `token`
+  - `401 Unauthorized` — Invalid credentials
+  - `500 Internal Server Error` — Unexpected server error
+url: '{{baseUrl}}/v1/users/login'
+method: POST
+headers:
+  Content-Type: application/json
+  Accept: application/json
+body:
+  type: json
+  content: |-
+    {
+      "username": "string",
+      "password": "string"
+    }
+  $type: |-
+    {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    }
+examples: ./.resources/Log in a user.resources/examples
+order: 1000
