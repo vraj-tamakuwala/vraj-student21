@@ -4,6 +4,7 @@ url: "{{baseUrl}}/v1/users/:id"
 method: DELETE
 headers:
   Accept: application/json
+  X-API-Key: "{{apiKey}}"
 pathVariables:
   - key: id
     value: "{{userId}}"
@@ -22,8 +23,6 @@ pathVariables:
 body:
   type: text
   content: ""
-examples: ./.resources/Delete a user.resources/examples
-order: 3000
 scripts:
   - type: afterResponse
     code: |-
@@ -61,3 +60,5 @@ scripts:
           pm.collectionVariables.unset("authToken");
       }
     language: text/javascript
+examples: ./.resources/Delete a user.resources/examples
+order: 3000

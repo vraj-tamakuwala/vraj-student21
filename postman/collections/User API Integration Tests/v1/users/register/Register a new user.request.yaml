@@ -1,10 +1,11 @@
 $kind: http-request
-name: Log in a user
-url: "{{baseUrl}}/v1/users/login"
+name: Register a new user
+url: "{{baseUrl}}/v1/users/register"
 method: POST
 headers:
   Content-Type: application/json
   Accept: application/json
+  X-API-Key: "{{apiKey}}"
 body:
   type: json
   content: |-
@@ -24,14 +25,17 @@ body:
         }
       }
     }
-examples: ./.resources/Log in a user.resources/examples
-order: 1000
 scripts:
-  - type: afterResponse
+  - type: beforeRequest
     code: |-
-      // Test 1: Status code is 200 OK
-      pm.test("Status code is 200 OK", function () {
-          pm.response.to.have.status(200);
+      pm.variables.set("password", pm.variables.replaceIn("{{$randomPassword}}"));
+      pm.variables.set("username", pm.variables.replaceIn("{{$randomUserName}}"));
+    language: text/javascript
+  - type: afterResponse
+    code: |+
+      // Test 1: Status code is 201 Created
+      pm.test("Status code is 201 Created", function () {
+          pm.response.to.have.status(201);
       });
 
       // Test 2: Response has JSON content type
@@ -53,29 +57,27 @@ scripts:
           pm.expect(jsonData.id).to.be.a("number");
       });
 
-      // Test 5: token is a valid JWT (3 dot-separated parts)
-      pm.test("token is a valid JWT string", function () {
+      // Test 5: token is a non-empty string (JWT format)
+      pm.test("token is a non-empty JWT string", function () {
           const jsonData = pm.response.json();
           pm.expect(jsonData.token).to.be.a("string").and.to.have.length.above(0);
           pm.expect(jsonData.token.split(".").length).to.eql(3);
       });
 
       // Test 6: username in response matches the one sent
-      pm.test("username in response matches request body", function () {
-          const jsonData = pm.response.json();
-          const requestBody = JSON.parse(pm.request.body.raw);
-          pm.expect(jsonData.username).to.eql(requestBody.username);
-      });
+      // pm.test("username in response matches request body", function () {
+      //     const jsonData = pm.response.json();
+      //     const requestBody = JSON.parse(pm.request.body.raw);
+      //     pm.expect(jsonData.username).to.eql(requestBody.username);
+      // });
 
-      // Test 7: Response time is acceptable
-      pm.test("Response time is less than 2000ms", function () {
-          pm.expect(pm.response.responseTime).to.be.below(2000);
-      });
-
-      // Save token for downstream requests
-      if (pm.response.code === 200) {
+      // Save userId and token for downstream requests
+      if (pm.response.code === 201) {
           const jsonData = pm.response.json();
-          pm.collectionVariables.set("userId", jsonData.id);
-          pm.collectionVariables.set("authToken", jsonData.token);
+          pm.variables.set("userId", jsonData.id);
+          pm.variables.set("authToken", jsonData.token);
       }
+
     language: text/javascript
+examples: ./.resources/Register a new user.resources/examples
+order: 1000

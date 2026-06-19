@@ -9,32 +9,28 @@ request:
       value: <API Key>
       description: "Added as a part of security scheme: apikey"
   pathVariables:
-    id: "953"
+    id: "9183"
   body:
     type: text
     content: ""
 response:
-  statusCode: 200
-  statusText: OK
+  statusCode: 404
+  statusText: Not Found
   headers:
     Content-Type: application/json
   body:
     type: json
     content: |-
       {
-        "id": 5432,
-        "username": "string"
+        "message": "string"
       }
     $type: |-
       {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer"
-          },
-          "username": {
+          "message": {
             "type": "string"
           }
         }
       }
-order: 1000
+order: 2000

@@ -9,13 +9,13 @@ request:
       value: <API Key>
       description: "Added as a part of security scheme: apikey"
   pathVariables:
-    id: "953"
+    id: "9183"
   body:
     type: text
     content: ""
 response:
-  statusCode: 500
-  statusText: Internal Server Error
+  statusCode: 200
+  statusText: OK
   headers:
     Content-Type: application/json
   body:
@@ -33,4 +33,4 @@ response:
           }
         }
       }
-order: 2000
+order: 1000

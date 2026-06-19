@@ -1,10 +1,10 @@
 $kind: collection
-name: UserAPI - Integration Test Suite
+name: User API Integration Tests
 description: This is a demo for user API
 variables:
   baseUrl: /
 auth:
-  - id: d470bfd2-3139-453e-b28e-17c165647178
+  - id: 8fcf76df-9d6b-471a-a04a-f85cc947b75b
     type: apikey
     name: apikey auth
     credentials:

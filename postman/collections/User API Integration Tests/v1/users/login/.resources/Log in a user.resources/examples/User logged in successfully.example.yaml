@@ -1,6 +1,6 @@
 $kind: http-example
 request:
-  url: "{{baseUrl}}/v1/users/register"
+  url: "{{baseUrl}}/v1/users/login"
   method: POST
   headers:
     - key: Content-Type
@@ -18,15 +18,15 @@ request:
         "password": "string"
       }
 response:
-  statusCode: 201
-  statusText: Created
+  statusCode: 200
+  statusText: OK
   headers:
     Content-Type: application/json
   body:
     type: json
     content: |-
       {
-        "id": 2848,
+        "id": 2157,
         "username": "string",
         "token": "string"
       }

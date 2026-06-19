@@ -9,28 +9,32 @@ request:
       value: <API Key>
       description: "Added as a part of security scheme: apikey"
   pathVariables:
-    id: "953"
+    id: "9183"
   body:
     type: text
     content: ""
 response:
-  statusCode: 500
-  statusText: Internal Server Error
+  statusCode: 200
+  statusText: OK
   headers:
     Content-Type: application/json
   body:
     type: json
     content: |-
       {
-        "message": "string"
+        "id": 3325,
+        "username": "string"
       }
     $type: |-
       {
         "type": "object",
         "properties": {
-          "message": {
+          "id": {
+            "type": "integer"
+          },
+          "username": {
             "type": "string"
           }
         }
       }
-order: 3000
+order: 1000

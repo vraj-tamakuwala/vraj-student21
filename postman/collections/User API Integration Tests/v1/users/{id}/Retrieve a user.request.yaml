@@ -4,6 +4,7 @@ url: "{{baseUrl}}/v1/users/:id"
 method: GET
 headers:
   Accept: application/json
+  X-API-Key: "{{apiKey}}"
 pathVariables:
   - key: id
     value: "{{userId}}"
@@ -22,8 +23,6 @@ pathVariables:
 body:
   type: text
   content: ""
-examples: ./.resources/Retrieve a user.resources/examples
-order: 1000
 scripts:
   - type: afterResponse
     code: |-
@@ -74,3 +73,5 @@ scripts:
           pm.expect(pm.response.responseTime).to.be.below(2000);
       });
     language: text/javascript
+examples: ./.resources/Retrieve a user.resources/examples
+order: 1000
