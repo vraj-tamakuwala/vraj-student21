@@ -1,0 +1,7 @@
+name: local
+values:
+  - key: baseUrl
+    value: 'https://localhost:3000'
+  - key: apiKey
+    value: ''
+color: 300

@@ -1,0 +1,7 @@
+name: prod
+values:
+  - key: baseUrl
+    value: 'https://customer-education.postmanlabs.com'
+  - key: apiKey
+    value: '1234'
+color: 120

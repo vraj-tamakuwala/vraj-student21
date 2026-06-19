@@ -1,0 +1,81 @@
+$kind: http-request
+name: Log in a user
+url: "{{baseUrl}}/v1/users/login"
+method: POST
+headers:
+  Content-Type: application/json
+  Accept: application/json
+body:
+  type: json
+  content: |-
+    {
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  $type: |-
+    {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    }
+examples: ./.resources/Log in a user.resources/examples
+order: 1000
+scripts:
+  - type: afterResponse
+    code: |-
+      // Test 1: Status code is 200 OK
+      pm.test("Status code is 200 OK", function () {
+          pm.response.to.have.status(200);
+      });
+
+      // Test 2: Response has JSON content type
+      pm.test("Response has JSON content type", function () {
+          pm.expect(pm.response.headers.get("Content-Type")).to.include("application/json");
+      });
+
+      // Test 3: Response body contains required fields
+      pm.test("Response body contains id, username, and token", function () {
+          const jsonData = pm.response.json();
+          pm.expect(jsonData).to.have.property("id");
+          pm.expect(jsonData).to.have.property("username");
+          pm.expect(jsonData).to.have.property("token");
+      });
+
+      // Test 4: id is a number
+      pm.test("id is a number", function () {
+          const jsonData = pm.response.json();
+          pm.expect(jsonData.id).to.be.a("number");
+      });
+
+      // Test 5: token is a valid JWT (3 dot-separated parts)
+      pm.test("token is a valid JWT string", function () {
+          const jsonData = pm.response.json();
+          pm.expect(jsonData.token).to.be.a("string").and.to.have.length.above(0);
+          pm.expect(jsonData.token.split(".").length).to.eql(3);
+      });
+
+      // Test 6: username in response matches the one sent
+      pm.test("username in response matches request body", function () {
+          const jsonData = pm.response.json();
+          const requestBody = JSON.parse(pm.request.body.raw);
+          pm.expect(jsonData.username).to.eql(requestBody.username);
+      });
+
+      // Test 7: Response time is acceptable
+      pm.test("Response time is less than 2000ms", function () {
+          pm.expect(pm.response.responseTime).to.be.below(2000);
+      });
+
+      // Save token for downstream requests
+      if (pm.response.code === 200) {
+          const jsonData = pm.response.json();
+          pm.collectionVariables.set("userId", jsonData.id);
+          pm.collectionVariables.set("authToken", jsonData.token);
+      }
+    language: text/javascript
