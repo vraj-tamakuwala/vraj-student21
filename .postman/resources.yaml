@@ -11,3 +11,4 @@ cloudResources:
     ../contract/index.yaml: 5781131f-7186-421a-badd-edf3d9e960df
   collections:
     ../postman/collections/User API Integration Tests: 55929738-a2a6ad10-cf75-41f7-8569-e1adda237b5d
+    ../postman/collections/User API Documentation: 55929738-096d02d0-aa26-499d-b2a0-13c66df4bd71
